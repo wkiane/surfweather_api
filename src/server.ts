@@ -8,26 +8,26 @@ import bodyParser from 'body-parser';
 import { ForecastController } from './app/controllers/forecast';
 
 export class SetupServer extends Server {
-  constructor(private port = 3333) {
+  constructor (private port = 3333) {
     super();
   }
 
-  public int(): void {
+  public int (): void {
     this.setupExpress();
     this.setupControllers();
   }
 
-  private setupExpress(): void {
+  private setupExpress (): void {
     this.app.use(bodyParser.json());
   }
 
-  private setupControllers(): void {
+  private setupControllers (): void {
     const forecastController = new ForecastController();
 
     this.addControllers([forecastController]);
   }
 
-  public getApp(): Application {
+  public getApp (): Application {
     return this.app;
   }
 }
