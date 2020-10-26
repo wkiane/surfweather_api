@@ -7,7 +7,6 @@ import bodyParser from 'body-parser';
 import * as database from '@src/database';
 import { ForecastController } from './app/controllers/forecast';
 import { BeachesController } from './app/controllers/beaches';
-import { hostname } from 'os';
 
 export class SetupServer extends Server {
   constructor (private port = 3333) {
