@@ -26,7 +26,7 @@ describe('Beach forecast functional tests', () => {
     })
       .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
       .get('/v2/weather/point')
-      .query({ params: 'swellDirection%2CswellHeight%2CswellPeriod%2CwaveDirection%2CwaveHeight%2CwindDirection%2CwindSpeed', source: 'noaa', lat: '-33.792726', lng: '151.289824%7D' })
+      .query({ params: 'swellDirection%2CswellHeight%2CswellPeriod%2CwaveDirection%2CwaveHeight%2CwindDirection%2CwindSpeed', source: 'noaa', lat: '-33.792726', lng: '151.289824' })
       .reply(200, stormGlassWeather3HoursFixture);
 
     const { body, status } = await global.testRequest.get('/forecast');
@@ -38,7 +38,7 @@ describe('Beach forecast functional tests', () => {
   it('should return 500 if something goes wrong during the processing', async () => {
     nock('https://api.stormglass.io:443', { encodedQueryParams: true })
       .get('/v2/weather/point')
-      .query({ params: 'swellDirection%2CswellHeight%2CswellPeriod%2CwaveDirection%2CwaveHeight%2CwindDirection%2CwindSpeed', source: 'noaa', lat: '-33.792726', lng: '151.289824%7D' })
+      .query({ params: 'swellDirection%2CswellHeight%2CswellPeriod%2CwaveDirection%2CwaveHeight%2CwindDirection%2CwindSpeed', source: 'noaa', lat: '-33.792726', lng: '151.289824' })
       .replyWithError('Something went wrong');
 
     const { status } = await global.testRequest.get('/forecast');
