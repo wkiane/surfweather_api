@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import * as database from '@src/database';
 import { ForecastController } from './app/controllers/forecast';
 import { BeachesController } from './app/controllers/beaches';
+import { hostname } from 'os';
 
 export class SetupServer extends Server {
   constructor (private port = 3333) {
@@ -32,6 +33,12 @@ export class SetupServer extends Server {
 
   private async setupDatabase (): Promise<void> {
     await database.connect();
+  }
+
+  public start (): void {
+    this.app.listen(this.port, () => {
+      console.info('Server is listening on port: ', this.port);
+    });
   }
 
   public async close (): Promise<void> {

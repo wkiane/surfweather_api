@@ -34,25 +34,10 @@ export class Forecast {
     }
   }
 
-  private enrichBeachData (points: ForecastPoint[], beach: Beach): BeachForecast[] {
-    return points.map(e => ({
-      ...{
-        lat: beach.lat,
-        lng: beach.lng,
-        name: beach.name,
-        position: beach.position,
-        rating: 1
-      },
-      ...e
-    }));
-  }
-
   private mapForecastByTime (forecast: BeachForecast[]): TimeForecast[] {
     const forecastByTime: TimeForecast[] = [];
-
     for (const point of forecast) {
-      const timePoint = forecastByTime.find(f => f.time === point.time);
-
+      const timePoint = forecastByTime.find((f) => f.time === point.time);
       if (timePoint) {
         timePoint.forecast.push(point);
       } else {
@@ -62,7 +47,23 @@ export class Forecast {
         });
       }
     }
-
     return forecastByTime;
+  }
+
+  private enrichBeachData (
+    points: ForecastPoint[],
+    beach: Beach
+  ): BeachForecast[] {
+    return points.map((e) => ({
+      ...{},
+      ...{
+        lat: beach.lat,
+        lng: beach.lng,
+        name: beach.name,
+        position: beach.position,
+        rating: 1
+      },
+      ...e
+    }));
   }
 }
