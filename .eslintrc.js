@@ -21,5 +21,11 @@ module.exports = {
   rules: {
     semi: [1, 'always'],
     'no-useless-constructor': 'off'
+  },
+  '@typescript-eslint/ban-types': ['error', {
+    types: {
+      object: null,
+    }
   }
+  ]
 };
