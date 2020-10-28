@@ -8,7 +8,7 @@ describe('Beach forecast functional tests', () => {
   const defaultUser = {
     name: 'John Doe',
     email: 'john2@mail.com',
-    password: '1234',
+    password: '1234'
   };
 
   let token: string;

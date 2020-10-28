@@ -1,4 +1,4 @@
-import * as http from 'http'
+import * as http from 'http';
 import { DecodedUser } from './app/services/auth';
 
 declare module 'express-serve-static-core' {

@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import config from 'config'
+import config from 'config';
 import { User } from '../models/user';
 
 export interface DecodedUser extends Omit<User, '_id'> {
@@ -18,10 +19,10 @@ export default class AuthService {
   public static generateToken (payload: object): string {
     return jwt.sign(payload, config.get('App.auth.key'), {
       expiresIn: config.get('App.auth.tokenExpiresIn')
-    })
+    });
   }
 
-  public static decodeToken(token: string): DecodedUser {
-    return jwt.verify(token, config.get('App.auth.key')) as DecodedUser;    
+  public static decodeToken (token: string): DecodedUser {
+    return jwt.verify(token, config.get('App.auth.key')) as DecodedUser;
   }
 }

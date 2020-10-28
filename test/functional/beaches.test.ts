@@ -4,9 +4,9 @@ import AuthService from '@src/app/services/auth';
 
 describe('Beaches funcional tests', () => {
   const defaultUser = {
-      name: 'John Doe',
-      email: 'john2@mail.com',
-      password: '1234',
+    name: 'John Doe',
+    email: 'john2@mail.com',
+    password: '1234'
   };
 
   let token: string;
@@ -16,10 +16,9 @@ describe('Beaches funcional tests', () => {
     const user = await new User(defaultUser).save();
 
     token = AuthService.generateToken(user.toJSON());
-  })
+  });
 
   describe('When creating a beach', () => {
-
     it('should create a beach with sucess', async () => {
       const newBeach = {
         lat: -33.792726,
