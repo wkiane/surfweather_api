@@ -12,6 +12,10 @@
       },
       "auth": {
         "key": "JWT_SECRET_KEY"
+      },
+      "logger": {
+        "enabled": "true",
+        "level": "info"
       }
     }
   }
