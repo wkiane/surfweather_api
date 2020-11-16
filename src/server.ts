@@ -1,7 +1,6 @@
 import './util/module-alias';
-
+import { config } from 'dotenv';
 import { Application } from 'express';
-
 import { Server } from '@overnightjs/core';
 import bodyParser from 'body-parser';
 import * as database from '@src/database';
@@ -11,9 +10,11 @@ import { ForecastController } from './app/controllers/forecast';
 import { BeachesController } from './app/controllers/beaches';
 import { UsersController } from './app/controllers/users';
 import logger from './logger';
+
 export class SetupServer extends Server {
   constructor (private port = 3333) {
     super();
+    config();
   }
 
   public async init (): Promise<void> {

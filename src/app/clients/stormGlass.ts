@@ -87,7 +87,7 @@ export class StormGlass {
         }&source=${this.stormGlassAPISource}`,
         {
           headers: {
-            Authorization: stormglassResourceConfig.get('apiToken')
+            Authorization: process.env.STORM_GLASS_API_TOKEN
           }
         }
       );
